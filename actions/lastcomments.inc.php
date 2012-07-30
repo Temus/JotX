@@ -2,6 +2,8 @@
 	// Display comments
 	function lastcomments_mode(&$object) {
 		global $modx;
+		
+		$output_comments = NULL;
 		// Check if viewing is allowed
 		if($object->canView) {
 			
@@ -26,7 +28,12 @@
 				$tpl->AddVar('chunk',$chunk);
 				$comments[] = $tpl->Render();
 			}
-			$object->config["html"]["comments"] = $output_comments = join("",$comments);
+			$object->config["html"]["comments"] = join("",$comments);
+			
+			//onSetCommentsOutput event
+			if (null !== ($output = $object->doEvent("onSetCommentsOutput"))) return $output;
+			
+			$output_comments = $object->config["html"]["comments"];
 		}
 		if ($object->config["output"]) return $output_comments;
 	}
