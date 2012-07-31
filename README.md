@@ -67,6 +67,7 @@ onReturnOutput,onSetDefaultOutput,onBeforeGetUserPostCount,onSetFormOutput,onSet
 * **antispam** (события: onBeforePOSTProcess,onSetFormOutput) - борьба с ботами путём добавления скрытого поля-ловушки
 * **nolink** (событие: onBeforeValidateFormField) - запретить ссылки в комментариях
 * **onlyrus** (событие: onBeforeValidateFormField) - запретить нерусский спам
+* **notifyfaq** (события: onProcessForm,onBeforeNotify) - уведомление пользователю об ответе на вопрос в FAQ
 
 Будут и другие.
 
