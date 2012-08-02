@@ -23,10 +23,13 @@ function antispam(&$object,$params){
 		<input type="text" name="'.$fieldName.'" value="" size="40" />
 	</div>
 </form>';
-			$modx->regClientCSS('<style type="text/css">.'.$className.' {left:0; position:absolute; top:-500px; width:1px; height:1px; overflow:hidden; visibility:hidden;}</style>');
-			$output_form = $object->config["html"]["form"];
-			$output_form = str_replace('</form>',$block,$output_form);
-			if ($object->config["output"]) return $output_form;
+			$css = '<style type="text/css">.'.$className.' {left:0; position:absolute; top:-500px; width:1px; height:1px; overflow:hidden; visibility:hidden;}</style>';
+			if ($_SERVER['HTTP_X_REQUESTED_WITH'] != 'XMLHttpRequest') {
+				$modx->regClientCSS($css);
+			} else {
+				$block .= $css;
+			}
+			$object->config["html"]["form"] = str_replace('</form>',$block,$object->config["html"]["form"]);
 			break;
 	}
 }
