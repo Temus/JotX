@@ -68,6 +68,7 @@ onReturnOutput,onSetDefaultOutput,onBeforeGetUserPostCount,onSetFormOutput,onSet
 * **nolink** (событие: onBeforeValidateFormField) - запретить ссылки в комментариях
 * **onlyrus** (событие: onBeforeValidateFormField) - запретить нерусский спам
 * **notifyfaq** (события: onProcessForm,onBeforeNotify) - уведомление пользователю об ответе на вопрос в FAQ
+* **rss** (события: onBeforeProcessPassiveActions,onSetCommentsOutput) - добавляет ссылку на RSS-ленту
 
 Будут и другие.
 

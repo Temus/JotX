@@ -92,3 +92,6 @@
 .jot-checkbox {display: inline-block; font-size: 13px; font-weight: normal; line-height: 18px; margin:0; min-height: 18px; padding: 0 0 0 5px; vertical-align: middle;}
 .jot-checkbox input {background: transparent; border:0; cursor:pointer; display: inline-block; float: left; font-size: 13px; font-weight: normal; height:auto; line-height: normal; margin: 3px 3px 0 0; *margin-top: 0; padding:0; vertical-align: middle; width: auto;}
 .jot-show-all {float:right;}
+
+.jot-rss {float:left;}
+.jot-icon-rss {background: url("../img/icon-rss.gif") no-repeat; display: inline-block; height: 14px; *margin-right: .3em; line-height: 14px; vertical-align: text-top; width: 14px;}
