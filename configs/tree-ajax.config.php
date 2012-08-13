@@ -143,7 +143,7 @@
 </div>
 	';
 	
-	$tplNav = '
+	$tplNav = '@CODE:
 <a name="jotnav[+jot.link.id+]"></a>
 <div class="jot-nav">
 	<a rel="nofollow" class="jot-btn jot-show-all" href="[+jot.link.navigation:esc+][+jot.querykey.navigation+]=0#jotnav[+jot.link.id+]">Просмотреть все</a>
@@ -157,11 +157,11 @@
 </div>
 	';
 	
-	$tplNavPage = '
+	$tplNavPage = '@CODE:
 	<a rel="nofollow" class="jot-btn" href="[+jot.link.navigation:esc+][+jot.querykey.navigation+]=[+jot.page.num+]#jotnav[+jot.link.id+]">[+jot.page.num+]</a>
 	';
 	
-	$tplNavPageCur = '
+	$tplNavPageCur = '@CODE:
 	<a rel="nofollow" class="jot-btn jot-btn-active" href="[+jot.link.navigation:esc+][+jot.querykey.navigation+]=[+jot.page.num+]#jotnav[+jot.link.id+]">[+jot.page.num+]</a>
 	';
 
