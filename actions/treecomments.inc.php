@@ -96,6 +96,7 @@
 				$object->config["html"]["navigation"] = $tpl->Render();
 			}
 			
+			if(!function_exists('treeRender')){
 			function treeRender($tree, $pid, &$object, $depth) {
 				global $modx;
 				if (empty($tree[$pid])) return;
@@ -114,6 +115,7 @@
 					$res .= $tpl->Render();
 				}
 				return $res;
+			}
 			}
 			
 			/* Render comments */
