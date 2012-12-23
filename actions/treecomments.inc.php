@@ -111,6 +111,8 @@
 					$tpl->AddVar('chunk',$chunk);
 					if (isset($tree[$row['id']]) &&  $object->config["depth"] > $depth) {
 						$tpl->AddVar('jot.wrapper',treeRender($tree, $row['id'], $object, $depth+1));
+					}else{
+						$tpl->AddVar('jot.wrapper','');
 					}
 					$res .= $tpl->Render();
 				}
