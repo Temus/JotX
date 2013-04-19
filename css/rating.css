@@ -1,0 +1,5 @@
+.jot-vote {float:right; margin:5px 0 0 5px;}
+.jot-vote a {background:none; font-weight:bold; padding:1px 3px;}
+.jot-btn-up,.jot-p {color:#080;}
+.jot-btn-down,.jot-n {color:#c00;}
+.jot-rating {background:none !important; border:0; cursor:default; font-weight: bold;}

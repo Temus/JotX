@@ -71,6 +71,7 @@ onReturnOutput,onSetDefaultOutput,onBeforeGetUserPostCount,onSetFormOutput,onSet
 * **onlyrus** (событие: onBeforeValidateFormField) - запретить нерусский спам
 * **notifyfaq** (события: onProcessForm,onBeforeNotify) - уведомление пользователю об ответе на вопрос в FAQ
 * **rss** (события: onBeforeProcessPassiveActions,onSetCommentsOutput) - добавляет ссылку на RSS-ленту
+* **rating** (события: onFirstRun,onReturnOutput) - добавляет голосование за комментарий
 
 Будут и другие.
 

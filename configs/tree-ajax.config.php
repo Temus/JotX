@@ -15,6 +15,7 @@
 	$onBeforeValidateFormField='nolink';
 
 	$onBeforeFirstRun='subscribe';
+	$onFirstRun='rating';
 	$onSaveComment='subscribe';
 	$onBeforeRunActions='subscribe';
 	$onBeforeProcessPassiveActions='subscribe';
@@ -23,7 +24,7 @@
 	$onBeforeNotify='subscribe';
 	
 	$onSetCommentsOutput='ajax';
-	$onReturnOutput='ajax';
+	$onReturnOutput='rating,ajax';
 	
 	$tplForm = '@CODE:
 <div id="respond-[+jot.link.id+]" class="jot-form-wrap">
@@ -115,6 +116,11 @@
 	<a name="jc[+jot.link.id+][+comment.id+]"></a>
 	<div class="jot-row [+chunk.rowclass+] [+comment.published:is=`0`:then=`jot-row-up`+]">
 		<div class="jot-comment-head">
+			<div class="jot-vote">
+				<a class="jot-btn jot-btn-down" href="[+jot.link.navigation+]cid=[+comment.id+]&vote=down">-</a>
+				<span class="jot-btn jot-rating [+comment.rating:gt=`0`:then=`jot-p`+][+comment.rating:lt=`0`:then=`jot-n`+]">[+comment.rating+]</span>
+				<a class="jot-btn jot-btn-up" href="[+jot.link.navigation+]cid=[+comment.id+]&vote=up">+</a>
+			</div>
 			<div class="jot-mod">
 				[+jot.user.canedit:is=`1`:and:if=`[+comment.createdby+]`:is=`[+jot.user.id+]`:or:if=`[+jot.moderation.enabled+]`:is=`1`:then=`
 					<a class="jot-btn jot-btn-edit" href="[+jot.link.edit:esc+][+jot.querykey.id+]=[+comment.id+]#jf[+jot.link.id+]" title="Изменить"><i class="jot-icon-edit"></i> Изменить</a>
