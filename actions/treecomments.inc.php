@@ -42,10 +42,16 @@
 			}
 			
 			// Get tree
+			$ids = array();
+			foreach ($array_comments as $row) {
+				$ids[] = $row['id'];
+			}
 			$tree = array();
 			foreach ($array_comments as $row) {
-				$tree[(int) $row['parent']][] = $row;
+				if (in_array($row['parent'],$ids)) $tree[(int) $row['parent']][] = $row;
+				else $tree[0][] = $row;
 			}
+			unset($ids);
 			unset($array_comments);
 			
 			// Get first level comments count
