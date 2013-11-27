@@ -28,7 +28,7 @@ function ajax(&$object,$params){
 					."|!|~|!|". $object->config["html"]["moderate"]
 					."|!|~|!|". $object->config["html"]["navigation"]
 					."|!|~|!|". $object->config["html"]["subscribe"];
-				die($res);
+				if (isset($_GET["aj".$object->_idshort]) || $object->isPostback) die($res);
 			}
 			break;
 	}

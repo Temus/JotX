@@ -9,16 +9,16 @@
 	}
 	jotAjax = function(id) {
 		var hist;
-		$(document).delegate('.jot-nav a','click',function(event) {
+		$(document).delegate('.navigation-'+id+' .jot-nav a','click',function(event) {
 			hist = $(this).attr('href');
-			$.get($(this).attr('href'), function(data) {setData(data,id);});
+			$.get($(this).attr('href'),'aj'+id, function(data) {setData(data,id);});
 			return false;
 		});
-		$(document).delegate('.jot-list a,.jot-mod a','click',function(event) {
-			$.get($(this).attr('href'), function(data) {setData(data,id);});
+		$(document).delegate('#moderate-'+id+' .jot-list a,#comments-'+id+' .jot-mod a','click',function(event) {
+			$.get($(this).attr('href'),'aj'+id, function(data) {setData(data,id);});
 			return false;
 		});
-		$(document).delegate('.jot-form','submit',function(event) {
+		$(document).delegate('#form-'+id+' .jot-form','submit',function(event) {
 			event.preventDefault();
 			//var parent = $('#comment-parent-'+id).val();
 			$.post($(this).attr('action'), $(this).serialize(), function(data) {
@@ -26,9 +26,9 @@
 				//if (parent && addComment) {addComment.moveForm(id,parent);}
 			});
 		});
-		$(document).delegate('.jot-form .jot-btn-cancel','click',function(event) {
+		$(document).delegate('#form-'+id+' .jot-form .jot-btn-cancel','click',function(event) {
 			event.preventDefault();
-			$.get(hist, function(data) {setData(data,id);});
+			$.get(hist,'aj'+id, function(data) {setData(data,id);});
 		});
 	}
 })(jQuery);
