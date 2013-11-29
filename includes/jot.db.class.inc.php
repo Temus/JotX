@@ -133,14 +133,13 @@ class CJotDataDb {
 		global $modx;
 		
 		foreach($this->fields as $n=>$v) { $this->fields[$n] = $modx->db->escape($v);}
+		
+		//onBeforeSaveComment event
+		$this->doEvent("onBeforeSaveComment");
 			
 		if($this->isNew){
-
+			
 			$this->fields['id'] = $modx->db->insert($this->fields,$this->tbl["content"]);
-			
-			//onBeforeSaveComment event
-			$this->doEvent("onBeforeSaveComment");
-			
 			foreach($this->cfields as $n=>$v) { 
 				$insert = array(
 					'id' => $this->fields['id'],
@@ -152,11 +151,9 @@ class CJotDataDb {
 			
 			$this->isNew = false;
 		} else {
+			
 			$id=$this->fields['id'];
 			$modx->db->update($this->fields, $this->tbl["content"], "id=$id");
-			
-			//onBeforeSaveComment event
-			$this->doEvent("onBeforeSaveComment");
 			
 			foreach($this->cfields as $n=>$v) { 
 				$update = array(
