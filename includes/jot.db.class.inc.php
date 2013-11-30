@@ -135,7 +135,7 @@ class CJotDataDb {
 		foreach($this->fields as $n=>$v) { $this->fields[$n] = $modx->db->escape($v);}
 		
 		//onBeforeSaveComment event
-		$this->doEvent("onBeforeSaveComment");
+		if (null !== ($output = $this->doEvent("onBeforeSaveComment"))) return;
 			
 		if($this->isNew){
 			
