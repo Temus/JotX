@@ -1,26 +1,26 @@
 <?php
 	setlocale (LC_ALL, 'ru_RU.UTF-8');
-	$customfields='name,email';
-	$validate='name:Вы не написали своё имя,email:Неправильный e-mail:email,content:Вы не заполнили поле комментария';
-	$action='tree';
-	$sortby='createdon:a';
-	$cssFile='assets/snippets/jot/css/tree.css';
-	$js=1;
-	$jsFile='assets/snippets/jot/js/tree.js';
-	//$pagination=0;
-	$onDeleteComment='delthread';
-	
-	$onBeforePOSTProcess='antispam';
-	$onSetFormOutput='antispam';
-	$onBeforeValidateFormField='nolink';
+	$customfields = isset($customfields) ? $customfields : 'name,email';
+	$validate = isset($validate) ? $validate : 'name:Вы не написали своё имя,email:Неправильный e-mail:email,content:Вы не заполнили поле комментария';
+	$action = isset($action) ? $action : 'tree';
+	$sortby = isset($sortby) ? $sortby : 'createdon:a';
+	$cssFile = isset($cssFile) ? $cssFile : 'assets/snippets/jot/css/tree.css';
+	$js = isset($js) ? $js : 1;
+	$jsFile = isset($jsFile) ? $jsFile : 'assets/snippets/jot/js/tree.js';
 
-	$onBeforeFirstRun='subscribe';
-	$onSaveComment='subscribe';
-	$onBeforeRunActions='subscribe';
-	$onBeforeProcessPassiveActions='subscribe';
-	$onGetSubscriptions='subscribe';
-	$onBeforeGetUserInfo='subscribe';
-	$onBeforeNotify='subscribe';
+	$onDeleteComment = isset($onDeleteComment) ? $onDeleteComment : 'delthread';
+	
+	$onBeforePOSTProcess = isset($onBeforePOSTProcess) ? $onBeforePOSTProcess : 'antispam';
+	$onSetFormOutput = isset($onSetFormOutput) ? $onSetFormOutput : 'antispam';
+	$onBeforeValidateFormField = isset($onBeforeValidateFormField) ? $onBeforeValidateFormField : 'nolink';
+
+	$onBeforeFirstRun = isset($onBeforeFirstRun) ? $onBeforeFirstRun : 'subscribe';
+	$onSaveComment = isset($onSaveComment) ? $onSaveComment : 'subscribe';
+	$onBeforeRunActions = isset($onBeforeRunActions) ? $onBeforeRunActions : 'subscribe';
+	$onBeforeProcessPassiveActions = isset($onBeforeProcessPassiveActions) ? $onBeforeProcessPassiveActions : 'subscribe';
+	$onGetSubscriptions = isset($onGetSubscriptions) ? $onGetSubscriptions : 'subscribe';
+	$onBeforeGetUserInfo = isset($onBeforeGetUserInfo) ? $onBeforeGetUserInfo : 'subscribe';
+	$onBeforeNotify = isset($onBeforeNotify) ? $onBeforeNotify : 'subscribe';
 	
 	$tplForm = '@CODE:
 <div id="respond-[+jot.link.id+]" class="jot-form-wrap">

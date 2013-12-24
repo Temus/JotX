@@ -1,13 +1,13 @@
 <?php
 	setlocale (LC_ALL, 'ru_RU.UTF-8');
-	$captcha=2;
-	$moderated=1;
-	$customfields='name,email,answer';
-	$validate='name:Вы не написали своё имя,email:Неправильный e-mail:email,content:Вы не заполнили поле сообщения';
-	$cssFile='assets/snippets/jot/css/faq.css';
+	$captcha = isset($captcha) ? $captcha : 2;
+	$moderated = isset($moderated) ? $moderated : 1;
+	$customfields = isset($customfields) ? $customfields : 'name,email,answer';
+	$validate = isset($validate) ? $validate : 'name:Вы не написали своё имя,email:Неправильный e-mail:email,content:Вы не заполнили поле сообщения';
+	$cssFile = isset($cssFile) ? $cssFile : 'assets/snippets/jot/css/faq.css';
 	
-	$onBeforePOSTProcess='antispam';
-	$onSetFormOutput='antispam';
+	$onBeforePOSTProcess = isset($onBeforePOSTProcess) ? $onBeforePOSTProcess : 'antispam';
+	$onSetFormOutput = isset($onSetFormOutput) ? $onSetFormOutput : 'antispam';
 	
 	$tplForm='@CODE:
 <div class="jot-form-wrap">
