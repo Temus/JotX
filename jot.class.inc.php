@@ -75,6 +75,7 @@ class CJot {
 		$this->config["tagids"] = !is_null($this->Get("tagids")) ? $this->processTags($this->Get("tagids")) : $this->config["tagid"];
 		$this->config["userids"] = !is_null($this->Get("userids")) ? $this->processUsers($this->Get("userids")) : '*';
 		$this->config["pagination"] = !is_null($this->Get("pagination")) ? $this->Get("pagination") : 10; // Set pagination (0 = disabled, # = comments per page)
+		$this->config["pageAdjacents"] = !is_null($this->Get("pageAdjacents")) ? $this->Get("pageAdjacents") : 2; // Set number of pages before and after the current one
 		$this->config["captcha"] = !is_null($this->Get("captcha")) ? intval($this->Get("captcha")) : 0; // Set captcha (0 = disabled, 1 = enabled, 2 = enabled for not logged in users)
 		$this->config["postdelay"] = !is_null($this->Get("postdelay")) ? $this->Get("postdelay") : 15; // Set post delay in seconds
 		$this->config["guestname"] = !is_null($this->Get("guestname")) ? $this->Get("guestname") : "Гость"; // Set guestname if none is specified
@@ -166,6 +167,7 @@ class CJot {
 		$this->templates["navPage"] = !is_null($this->Get("tplNavPage")) ? $this->Get("tplNavPage") : $this->config["path"]."/templates/chunk.nav.page.inc.html";
 		$this->templates["navPageCur"] = !is_null($this->Get("tplNavPageCur")) ? $this->Get("tplNavPageCur") : $this->config["path"]."/templates/chunk.nav.pagecur.inc.html";
 		$this->templates["navPageSpl"] = !is_null($this->Get("tplNavPageSpl")) ? $this->Get("tplNavPageSpl") : '';
+		$this->templates["navPageDots"] = !is_null($this->Get("tplNavPageDots")) ? $this->Get("tplNavPageDots") : ' ... ';
 		
 		// Querystring keys
 		$this->config["querykey"]["action"] = "jot".$this->_idshort;

@@ -21,11 +21,12 @@
 			$limit = $object->config["limit"];
 			$commentTotal = ($limit>0 && $limit<$commentTotal) ? $limit : $commentTotal;
 			$pagination = (isset($_GET[$object->config["querykey"]["navigation"]]) && $_GET[$object->config["querykey"]["navigation"]] == 0) ? 0 : $object->config["pagination"];
-			
+			$pageAdjacents = $object->config["pageAdjacents"];
+
 			// Apply pagination if enabled
 			if ($pagination > 0) {
 				$pageLength = ($limit>0 && $limit<$pagination) ? $limit : $pagination;
-				$pageTotal = ceil($commentTotal / $pageLength);
+				$lastPage = $pageTotal = ceil($commentTotal / $pageLength);
 				$pageCurrent = isset($_GET[$object->config["querykey"]["navigation"]]) ? $_GET[$object->config["querykey"]["navigation"]]: 1;
 				if ( ($pageCurrent < 1) || ($pageCurrent > $pageTotal) ) { $pageCurrent = 1; };
 				$pageOffset = (($pageCurrent*$pageLength)-$pageLength);
@@ -34,7 +35,7 @@
 			} else {
 				$pageLength = $limit;
 				$pageOffset = 0;
-				$pageTotal = 1;
+				$lastPage = $pageTotal = 1;
 				$pageCurrent = 1;
 				$navStart = 0;
 				$navEnd = $commentTotal;
@@ -60,11 +61,57 @@
 				$tplPage = $tpl->getTemplate($object->templates["navPage"]);
 				$tplPageCur = $tpl->getTemplate($object->templates["navPageCur"]);
 				$tplPageSpl = $tpl->getTemplate($object->templates["navPageSpl"]);
+				$tplDots = $tpl->getTemplate($object->templates["navPageDots"]);
 				$pages = '';
-				for ($i = 1; $i <= $pageTotal; $i++) {
-					$pages .= ($i == $pageCurrent) ? str_replace('[+jot.page.num+]',$i,$tplPageCur) : str_replace('[+jot.page.num+]',$i,$tplPage);
-					if ($i< $pageTotal) $pages .= $tplPageSpl;
-				}
+
+                //pages
+                if ($lastPage < 7 + ($pageAdjacents * 2)) { //not enough pages to bother breaking it up
+                    for ($counter = 1; $counter <= $lastPage; $counter++) {
+                        if ($counter == $pageCurrent)
+                            $pages .= str_replace('[+jot.page.num+]', $counter, $tplPageCur); // current page;
+                        else
+                            $pages .= str_replace('[+jot.page.num+]', $counter, $tplPage); // other pages
+                    }
+                } elseif ($lastPage > 5 + ($pageAdjacents * 2)) { //enough pages to hide some
+                    //close to beginning; only hide later pages
+                    if ($pageCurrent < 1 + ($pageAdjacents * 2)) {
+                        for ($counter = 1; $counter < 4 + ($pageAdjacents * 2); $counter++) {
+                            if ($counter == $pageCurrent)
+                                $pages .= str_replace('[+jot.page.num+]', $counter, $tplPageCur).$tplPageSpl; // current page;
+                            else
+                                $pages .= str_replace('[+jot.page.num+]', $counter, $tplPage).$tplPageSpl; // other pages
+                        }
+                        $pages .= str_replace('[+jot.page.num+]', $counter, $tplDots).$tplPageSpl;
+                        $pages .= str_replace('[+jot.page.num+]', $lastPage - 1, $tplPage).$tplPageSpl;
+                        $pages .= str_replace('[+jot.page.num+]', $lastPage, $tplPage);
+                    } //in middle; hide some front and some back
+                    elseif ($lastPage - ($pageAdjacents * 2) > $pageCurrent && $pageCurrent > ($pageAdjacents * 2)) {
+                        $pages .= str_replace('[+jot.page.num+]', 1, $tplPage).$tplPageSpl; // first page
+                        $pages .= str_replace('[+jot.page.num+]', 2, $tplPage).$tplPageSpl; // second page
+                        $pages .= str_replace('[+jot.page.num+]', 3, $tplDots).$tplPageSpl;
+                        for ($counter = $pageCurrent - $pageAdjacents; $counter <= $pageCurrent + $pageAdjacents; $counter++)
+                            if ($counter == $pageCurrent)
+                                $pages .= str_replace('[+jot.page.num+]', $counter, $tplPageCur).$tplPageSpl; // current page;
+                            else
+                                $pages .= str_replace('[+jot.page.num+]', $counter, $tplPage).$tplPageSpl; // other pages
+                        $pages .= str_replace('[+jot.page.num+]', $counter, $tplDots).$tplPageSpl;
+                        $pages .= str_replace('[+jot.page.num+]', $lastPage - 1, $tplPage).$tplPageSpl; // page before the last
+                        $pages .= str_replace('[+jot.page.num+]', $lastPage, $tplPage); // last page
+                    } //close to end; only hide early pages
+                    else {
+                        $pages .= str_replace('[+jot.page.num+]', 1, $tplPage).$tplPageSpl; // first page
+                        $pages .= str_replace('[+jot.page.num+]', 2, $tplPage).$tplPageSpl; // second page;
+                        $pages .= str_replace('[+jot.page.num+]', 3, $tplDots).$tplPageSpl;
+                        for ($counter = $lastPage - (2 + ($pageAdjacents * 2)); $counter <= $lastPage; $counter++) {
+                            if ($counter == $pageCurrent)
+                                $pages .= str_replace('[+jot.page.num+]', $counter, $tplPageCur); // current page;
+                            else
+                                $pages .= str_replace('[+jot.page.num+]', $counter, $tplPage); // other pages
+                            if ($counter < $lastPage) $pages .= $tplPageSpl;
+                        }
+                    }
+                }
+				
 				$tpl->template = str_replace('[+jot.pages+]',$pages,$tpl->template);
 				$tpl->AddVar('jot',$object->config);
 				$object->config["html"]["navigation"] = $tpl->Render();
