@@ -5,7 +5,7 @@
 .jot-subscribe {margin-bottom: 10px;}
 
 /* form */
-.jot-form-wrap {clear: both; font: 13px/1.2 Tahoma,Arial,sans-serif; padding: 10px 0;}
+.jot-form-wrap {clear: both; font: 13px/1.2 Tahoma,Arial,sans-serif; padding: 10px 0; width:410px;}
 .jot-reply-title {background: none; border: 0; color: #000; display: block; font: 18px/1.2 Tahoma,Arial,sans-serif; padding:0; margin: 0 0 10px; text-align: left; text-transform: none;}
 .jot-info {background: #f5f5f5; border: 1px solid #ccc; border-radius: 3px; font-size:11px; margin-bottom: 12px; padding: 4px; width: 400px;}
 .jot-form {margin-bottom: 6px;}
@@ -22,6 +22,7 @@
 .jot-input-prepend input {position: relative; vertical-align: middle; width: 165px; border-radius: 0 3px 3px 0;}
 .jot-controls textarea:focus,
 .jot-controls input[type="text"]:focus {border-color: rgba(82, 168, 236, 0.8); outline: 0; z-index: 2; box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);}
+.jot-captcha {border: 1px solid #ccc; float: right;}
 .jot-input-prepend .jot-add-on {
   background-color: #eee; border: 1px solid #ccc; display: inline-block; font-weight: normal; height: 18px; line-height: 18px; margin: 0 -1px; min-width: 16px; padding: 5px 5px 3px; 
   text-align: center; text-shadow: 0 1px 0 #fff; vertical-align: middle; width: auto; border-radius: 0;
