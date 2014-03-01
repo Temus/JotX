@@ -128,7 +128,7 @@
 				[+jot.moderation.enabled:is=`1`:then=`
 					[+comment.published:is=`0`:then=`<a class="jot-btn jot-btn-pub" href="[+jot.link.publish:esc+][+jot.querykey.id+]=[+comment.id+]#jotmod[+jot.link.id+]" title="Показать"><i class="jot-icon-pub"></i> Показать</a>`+]
 					[+comment.published:is=`1`:then=`<a class="jot-btn jot-btn-unpub" href="[+jot.link.unpublish:esc+][+jot.querykey.id+]=[+comment.id+]#jotmod[+jot.link.id+]" title="Скрыть"><i class="jot-icon-unpub"></i> Скрыть</a>`+]
-					<a class="jot-btn jot-btn-del" href="[+jot.link.delete:esc+][+jot.querykey.id+]=[+comment.id+]#jotmod[+jot.link.id+]" onclick="return confirm(\'Вы действительно хотите удалить это сообщение?\')" title="Удалить"><i class="jot-icon-del"></i> Удалить</a>
+					<a class="jot-btn jot-btn-del" href="[+jot.link.delete:esc+][+jot.querykey.id+]=[+comment.id+]#jotmod[+jot.link.id+]" onclick="if(!confirm(\'Вы действительно хотите удалить это сообщение?\')){e=event||window.event;e.stopImmediatePropagation();e.preventDefault();}" title="Удалить"><i class="jot-icon-del"></i> Удалить</a>
 				`:strip+]
 			</div>
 			<div class="jot-avatar" [+comment.createdby:ne=`0`:then=`title="Ответов: [+comment.userpostcount+]"`+]><img src="http://www.gravatar.com/avatar/[+comment.email:ifempty=`[+comment.custom.email+]`:lcase:md5+]?s=24&amp;d=mm&amp;r=g" alt="" /></div>
