@@ -18,7 +18,7 @@
 			$.get($(this).attr('href'),'aj'+id, function(data) {setData(data,id);});
 			return false;
 		});
-		$(document).delegate('#form-'+id+' .jot-form','submit',function(event) {
+		$(document).delegate('#respond-'+id+' .jot-form','submit',function(event) {
 			event.preventDefault();
 			//var parent = $('#comment-parent-'+id).val();
 			$.post($(this).attr('action'), $(this).serialize(), function(data) {
