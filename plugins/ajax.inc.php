@@ -19,7 +19,7 @@ function ajax(&$object,$params){
 		case "onReturnOutput":
 			if ($_SERVER['HTTP_X_REQUESTED_WITH'] != 'XMLHttpRequest') {
 				$modx->regClientStartupScript('<script type="text/javascript">window.jQuery || document.write(\'<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"><\/script>\');</script>');
-				$modx->regClientStartupScript($modx->config["base_url"].'assets/snippets/jot/js/ajax.js');
+				$modx->regClientStartupScript(MODX_BASE_URL.'assets/snippets/jot/js/ajax.js');
 				$modx->regClientStartupScript('<script type="text/javascript">jQuery(document).ready(function() { jotAjax("'.$object->_idshort.'"); });</script>');
 			}
 			else {

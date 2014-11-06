@@ -10,7 +10,7 @@ class CJotDataDb {
 	
 	function CJotDataDb() {
 		global $modx;
-		$this->tbl["check"] = $GLOBALS['table_prefix']."jot_fields";
+		$this->tbl["check"] = $modx->getFullTableName('jot_fields');
 		$this->tbl["content"] = $modx->getFullTableName('jot_content');
 		$this->tbl["subscriptions"] = $modx->getFullTableName('jot_subscriptions');
 		$this->tbl["fields"] = $modx->getFullTableName('jot_fields');
@@ -57,7 +57,7 @@ class CJotDataDb {
 			}
 			fclose($fh);
 			$idata = str_replace("\r", '', $idata);
-			$idata = str_replace('{PREFIX}',$GLOBALS['table_prefix'], $idata);
+			$idata = str_replace('{PREFIX}',$modx->db->config['table_prefix'], $idata);
 			$sql_array = explode("\n\n", $idata);
 			foreach($sql_array as $sql_entry) {
 				$sql_do = trim($sql_entry, "\r\n; ");

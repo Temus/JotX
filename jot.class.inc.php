@@ -18,7 +18,6 @@ class CJot {
 		if (!class_exists('CChunkie'))
 			include_once($path . '/includes/chunkie.class.inc.php');
 		$this->name = $this->config["snippet"]["name"] = "Jot";
-		$this->client = $modx->getUserData();
 		$this->_ctime = time();
 		$this->_check = 0;
 		$this->provider = new CJotDataDb;
@@ -119,9 +118,9 @@ class CJot {
 		$this->config["user"]["usrid"] = intval($_SESSION['webInternalKey']);
 		$this->config["user"]["id"] = (	$this->config["user"]["usrid"] > 0 ) ? (-$this->config["user"]["usrid"]) : $this->config["user"]["mgrid"];
 
-		$this->config["user"]["host"] = $this->client['ip'];
-		$this->config["user"]["ip"] = $this->client['ip'];
-		$this->config["user"]["agent"] = $this->client['ua'];
+		$this->config["user"]["host"] = $_SERVER['REMOTE_ADDR'];
+		$this->config["user"]["ip"] = $_SERVER['REMOTE_ADDR'];
+		$this->config["user"]["agent"] = $_SERVER['HTTP_USER_AGENT'];
 		$this->config["user"]["sechash"] = md5($this->config["user"]["id"].$this->config["user"]["host"].$this->config["user"]["ip"].$this->config["user"]["agent"]);
 		
 		// Automatic settings
@@ -345,10 +344,10 @@ class CJot {
 		if ($this->config["placeholders"]) $this->setPlaceholders($this->config,"jot");
 		
 		// Include stylesheet if needed
-		if ($this->config["css"]["include"]) $modx->regClientCSS($modx->config["base_url"].$this->config["css"]["file"]);
+		if ($this->config["css"]["include"]) $modx->regClientCSS(MODX_BASE_URL.$this->config["css"]["file"]);
 		
 		// Include JS if needed
-		if ($this->config["js"]["include"]) $modx->regClientStartupScript($modx->config["base_url"].$this->config["js"]["file"]);
+		if ($this->config["js"]["include"]) $modx->regClientStartupScript(MODX_BASE_URL.$this->config["js"]["file"]);
 		
 		//onReturnOutput event
 		$this->doEvent("onReturnOutput");
@@ -806,7 +805,7 @@ class CJot {
 		$array_url = array_merge($array_get, $array_values);
 		foreach ($array_url as $name => $value) {
 			if (!is_null($value)) {
-			  $urlstring[] = $name . '=' . urlencode($value);
+			  $urlstring[] = $name . '=' . urlencode(htmlspecialchars($value, ENT_QUOTES));
 			}
 		}
 		
