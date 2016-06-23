@@ -1,3 +1,20 @@
+//<?php
+/**
+ * Clear Comments
+ *
+ * Remove comments of documents when you empty MODx Trash Can.
+ *
+ * @category    plugin
+ * @version     1.0
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
+ * @package     modx
+ * @author      AHHP ~ Boplo.ir
+ * @internal    @events OnEmptyTrash
+ * @internal    @modx_category
+ * @internal    @properties 
+ * @internal    @installset base
+ * @internal    @disabled 1
+ */
 /**
  * Clear Comments Plugin: Remove comments of documents when you empty MODx Trash Can.
  * Version: 1.0

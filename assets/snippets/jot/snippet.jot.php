@@ -1,19 +1,4 @@
-/**
- * JotX
- * 
- * User comments with moderation and email subscription
- *
- * @category 	snippet
- * @version 	1.1
- * @license 	http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
- * @internal	@properties
- * @internal	@modx_category Content
- * @internal    @installset base, sample
- * @author      Armand "bS" Pondman (apondman@zerobarrier.nl)
- * @author      Temus (temus3@gmail.com)
- */
-
-
+<?php
 if(!defined('MODX_BASE_PATH')) die();
 $jotPath = MODX_BASE_PATH . 'assets/snippets/jot/';
 $config = (isset($config)) ? $jotPath.'configs/'.$config.'.config.php' : $jotPath.'configs/default.config.php';
