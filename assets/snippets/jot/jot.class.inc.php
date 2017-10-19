@@ -394,7 +394,7 @@ class CJot {
 		$formMode = $this->config["mode"]["passive"];	
 		$saveComment = 1;
 		$this->form["action"] = $this->config["link"]["current"];
-		if ($id && $pObj->isValidComment($this->config["docid"],$this->config["tagid"],$id) && $this->canEdit) {
+		if ($id && $pObj->isValidComment($this->config["docids"],$this->config["tagids"],$id) && $this->canEdit) {
 			$pObj->Comment($id);
 			if (($pObj->Get("createdby") == $this->config["user"]["id"]) || $this->isModerator) {
 				$this->form["action"] = $this->config["link"]["save"];
@@ -660,7 +660,7 @@ class CJot {
 	function doModerate($action = '',$id = 0) {
 		$output = NULL;
 		$pObj = $this->provider;
-		if ($this->isModerator && $pObj->isValidComment($this->config["docid"],$this->config["tagid"],$id)) {
+		if ($this->isModerator && $pObj->isValidComment($this->config["docids"],$this->config["tagids"],$id)) {
 			switch ($action) {
 				case "delete":
 					$pObj->Comment($id);

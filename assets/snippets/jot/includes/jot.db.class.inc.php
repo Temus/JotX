@@ -385,7 +385,7 @@ class CJotDataDb {
 	
 	function isValidComment($docid = 0,$tagid = '', $commentid = 0) {
 		global $modx;
-		$sql = 'select count(id) FROM '.$this->tbl["content"].' WHERE id = "'. $commentid .'" AND uparent = "'.$docid.'" AND tagid = "'.$tagid.'"';
+		$sql = 'select count(id) FROM '.$this->tbl["content"].' WHERE id = "'. $commentid .'" '. $this->sqlPart($docid,$tagid);
 		return intval($modx->db->getValue($sql));
 	}
 	
