@@ -68,7 +68,7 @@
 	
 	[+jot.captcha:is=`1`:then=`
 	<div class="jot-controls">
-		<a href="[+jot.link.current:esc+]" onclick="onclick=document.captcha.src=src+\'?rand=\'+Math.random(); return false;" title="Если код не читается, нажмите сюда, 
+		<a href="[+jot.link.current:esc+]" onclick="document.captcha.src=document.captcha.src+\'?rand=\'+Math.random(); return false;" title="Если код не читается, нажмите сюда,
 		чтобы сгенерировать новый"><img src="'.MODX_MANAGER_URL.'includes/veriword.php?rand=[+jot.seed+]" name="captcha" class="jot-captcha" width="148" height="60" alt="" /></a><br />
 		<label for="vericode-[+jot.link.id+]">Код:</label>
 		<input type="text" name="vericode" id="vericode-[+jot.link.id+]" style="width:150px" size="20" />
