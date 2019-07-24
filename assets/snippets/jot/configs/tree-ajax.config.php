@@ -98,7 +98,7 @@
 	<div class="jot-form-actions">
 		<button tabindex="[+jot.seed:math=`?+5`+]" class="jot-btn jot-btn-submit" type="submit">[+form.edit:is=`1`:then=`Сохранить`:else=`Отправить`+]</button>
 		[+form.edit:is=`1`:then=`
-		<button tabindex="[+jot.seed:math=`?+6`+]" class="jot-btn jot-btn-cancel" onclick="history.go(-1);return false;">Отмена</button>
+		<button tabindex="[+jot.seed:math=`?+6`+]" class="jot-btn jot-btn-cancel" data-type="cancel" onclick="history.go(-1);return false;">Отмена</button>
 		`+]
 		[+jot.user.id:is=`0`:then=`
 		<label class="jot-checkbox">
@@ -123,7 +123,7 @@
 				<span class="jot-btn jot-btn-up" data-type="vote" data-href="[+jot.link.navigation+]cid=[+comment.id+]&vote=up">+</span>
 			</div>
 			<!-- /rating -->
-			<div class="jot-mod">
+			<div class="jot-mod" data-type="mod">
 				[+jot.user.canedit:is=`1`:and:if=`[+comment.createdby+]`:is=`[+jot.user.id+]`:or:if=`[+jot.moderation.enabled+]`:is=`1`:then=`
 					<a class="jot-btn jot-btn-edit" href="[+jot.link.edit:esc+][+jot.querykey.id+]=[+comment.id+]#jf[+jot.link.id+]" title="Изменить"><i class="jot-icon-edit"></i> Изменить</a>
 				`:strip+]
