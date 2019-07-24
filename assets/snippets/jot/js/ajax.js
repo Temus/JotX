@@ -6,6 +6,7 @@
 		$('#moderate-'+id).html(array[2]);
 		$('.navigation-'+id).html(array[3]);
 		$('#subscribe-'+id).html(array[4]);
+		$('#count-'+id).html(array[5]);
 	}
 	jotAjax = function(id) {
 		var hist;

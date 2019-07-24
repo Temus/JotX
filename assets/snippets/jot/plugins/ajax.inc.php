@@ -9,6 +9,7 @@ function ajax(&$object,$params){
 				$object->config["html"]["moderate"] = '<div id="moderate-'.$object->_idshort.'">'.$object->config["html"]["moderate"].'</div>';
 				$object->config["html"]["navigation"] = '<div class="navigation-'.$object->_idshort.'">'.$object->config["html"]["navigation"].'</div>';
 				$object->config["html"]["comments"] = '<div id="comments-'.$object->_idshort.'">'.$object->config["html"]["comments"].'</div>';
+				$object->config["html"]["count-comments"] = '<span id="count-'.$object->_idshort.'">'.$object->config["html"]["count-comments"].'</span>';
 			}
 			break;
 		case "onSetFormOutput":
@@ -27,7 +28,8 @@ function ajax(&$object,$params){
 					."|!|~|!|". $object->config["html"]["comments"]
 					."|!|~|!|". $object->config["html"]["moderate"]
 					."|!|~|!|". $object->config["html"]["navigation"]
-					."|!|~|!|". $object->config["html"]["subscribe"];
+					."|!|~|!|". $object->config["html"]["subscribe"]
+					."|!|~|!|". $object->config["html"]["count-comments"];
 				if (isset($_GET["aj".$object->_idshort]) || $object->isPostback) die($res);
 			}
 			break;

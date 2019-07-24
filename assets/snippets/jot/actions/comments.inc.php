@@ -17,7 +17,7 @@
 			}
 			
 			// Get total number of comments
-			$commentTotal = $object->provider->GetCommentCount($object->config["docids"],$object->config["tagids"],$view,$object->config["userids"]);
+			$object->config["html"]["count-comments"] = $commentTotal = $object->provider->GetCommentCount($object->config["docids"],$object->config["tagids"],$view,$object->config["userids"]);
 			$limit = $object->config["limit"];
 			$commentTotal = ($limit>0 && $limit<$commentTotal) ? $limit : $commentTotal;
 			$pagination = (isset($_GET[$object->config["querykey"]["navigation"]]) && $_GET[$object->config["querykey"]["navigation"]] == 0) ? 0 : $object->config["pagination"];

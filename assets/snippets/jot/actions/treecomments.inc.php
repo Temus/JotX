@@ -32,7 +32,7 @@
 			$array_comments = $object->provider->GetComments($object->config["docids"],$object->config["tagids"],$view,$object->config["upc"],$object->config["sortby"],0,0,$object->config["userids"]);	
 			
 			// Get comments count
-			$count = count($array_comments);
+			$object->config["html"]["count-comments"] = $count = count($array_comments);
 			
 			// Comment Numbering
 			for ($i = 0; $i < $count; $i++) {
