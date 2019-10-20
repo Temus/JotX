@@ -12,8 +12,8 @@
 					<a class="jot-btn jot-btn-del" href="[+jot.link.delete:esc+][+jot.querykey.id+]=[+comment.id+]#jotmod[+jot.link.id+]" onclick="return confirm('Вы действительно хотите удалить это сообщение?')" title="Удалить"><i class="jot-icon-del"></i> Удалить</a>
 				`:strip+]
 			</div>
-			<div class="jot-avatar" [+comment.createdby:ne=`0`:then=`title="Ответов: [+comment.userpostcount+]"`+]><img src="http://www.gravatar.com/avatar/[+comment.email:ifempty=`[+comment.custom.email+]`:lcase:md5+]?s=24&amp;d=mm&amp;r=g" alt="" /></div>
-			<span class="jot-name">[+comment.username:ifempty=`[+comment.custom.name:ifempty=`[+jot.guestname+]`:esc+]`+] [+jot.moderation.enabled:is=`1`:then=`<span class="jot-extra"><a target="_blank" href="http://www.ripe.net/perl/whois?searchtext=[+comment.secip+]">([+comment.secip+])</a></span>`+]</span>
+			<div class="jot-avatar" [+comment.createdby:ne=`0`:then=`title="Ответов: [+comment.userpostcount+]"`+]><img src="//www.gravatar.com/avatar/[+comment.email:ifempty=`[+comment.custom.email+]`:lcase:md5+]?s=24&amp;d=mm&amp;r=g" alt="" /></div>
+			<span class="jot-name">[+comment.username:ifempty=`[+comment.custom.name:ifempty=`[+jot.guestname+]`:esc+]`+] [+jot.moderation.enabled:is=`1`:then=`<span class="jot-extra"><a target="_blank" href="//www.ripe.net/perl/whois?searchtext=[+comment.secip+]">([+comment.secip+])</a></span>`+]</span>
 			<span class="jot-date">[+comment.createdon:date=`%d %b %Y в %H:%M`+]</span>
 			<span class="jot-perma"><a rel="nofollow" title="Ссылка на комментарий" href="[+jot.link.current+]#jc[+jot.link.id+][+comment.id+]">#<!--[+comment.postnumber+]--></a></span>
 		</div>
