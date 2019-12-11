@@ -284,8 +284,8 @@ class CJotDataDb {
 		$webuser_data_tbl="left join " . $modx->getFullTableName('web_users') . " as wu on wu.id=-a.createdby "
 			."left join " . $modx->getFullTableName('web_user_attributes') . " as wua on wua.internalKey=wu.id ";
 		
-		$sql = "(select a.*,mu.username,mua.fullname,mua.email,mua.role,mua.gender,mua.country,mua.photo
-		from " . $tbl . " as a " .$user_data_tbl." ".$tblcustom. " where a.createdby>=0 " . $this->sqlPart($docid,$tagid,$userid) . "and mode = '0' " . $where . ") 
+		$sql = "select a.*,mu.username,mua.fullname,mua.email,mua.role,mua.gender,mua.country,mua.photo
+		from " . $tbl . " as a " .$user_data_tbl." ".$tblcustom. " where a.createdby>=0 " . $this->sqlPart($docid,$tagid,$userid) . "and mode = '0' " . $where . " 
 		union (select a.*,wu.username,wua.fullname,wua.email,wua.role,wua.gender,wua.country,wua.photo  
 		from " . $tbl . " as a " .$webuser_data_tbl." ".$tblcustom. " where a.createdby<0 " . $this->sqlPart($docid,$tagid,$userid) . "and mode = '0' " . $where . ")"
 		. $orderby . $limit;
