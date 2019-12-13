@@ -13,9 +13,9 @@ class CChunkie {
  	var $template, $phx, $phxreq, $phxerror, $check;
 	
 	function CChunkie($template = '') {
-		if (!class_exists("PHxParser")) include_once(strtr(realpath(dirname(__FILE__))."/phx.parser.class.inc.php", '\\', '/')); 
+		if (!class_exists("JotPHx")) include_once(strtr(realpath(dirname(__FILE__))."/phx.parser.class.inc.php", '\\', '/')); 
 		$this->template = $this->getTemplate($template);
-		$this->phx = new PHxParser();
+		$this->phx = new JotPHx();
 		$this->phxreq = "2.0.0";
 		$this->phxerror = '<div style="border: 1px solid red;font-weight: bold;margin: 10px;padding: 5px;">
 			Error! This MODx installation is running an older version of the PHx plugin.<br /><br />

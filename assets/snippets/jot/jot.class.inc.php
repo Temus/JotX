@@ -609,8 +609,9 @@ class CJot {
 				$subject = $this->config["subject"]["emails"];
 				break;
 		}
-
-		if ($modx->loadExtension('MODxMailer')){
+		if (method_exists($modx,'getMail')){
+			$mail = $modx->getMail();
+		} elseif ($modx->loadExtension('MODxMailer')){
 			$mail = $modx->mail;
 		} else {
 			include_once MODX_MANAGER_PATH . "includes/controls/class.phpmailer.php";

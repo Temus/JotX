@@ -12,10 +12,10 @@
 #
 ####*/
 
-class PHxParser {
+class JotPHx {
 	var $placeholders = array();
 	
-	function PHxParser($debug=0,$maxpass=50) {
+	function JotPHx($debug=0,$maxpass=50) {
 		global $modx;
 		$this->name = "PHx";
 		$this->version = "2.2.2";
