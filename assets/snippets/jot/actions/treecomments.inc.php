@@ -55,7 +55,8 @@
 			unset($array_comments);
 			
 			// Get first level comments count
-			$commentTotal = count($tree[0]);
+			//$commentTotal = count($tree[0]);
+			$commentTotal = count((array)$tree[0]);
 			
 			// Get total number of comments
 			$limit = $object->config["limit"];
